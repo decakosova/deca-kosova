@@ -396,10 +396,148 @@ footer {
     margin: 0;
     color: #f7f3eb;
 }
+.photo-section {
+    max-width: none;
+    width: 100%;
+    padding: 100px 8%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    position: relative;
+    color: white;
+    overflow: hidden;
+
+    background-attachment: fixed;
+
+    transition: background-position 0.15s linear;
+}
+
+.photo-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    z-index: 1;
+}
+
+.photo-section > * {
+    position: relative;
+    z-index: 2;
+    max-width: 1050px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.photo-section h2,
+.photo-section h3,
+.photo-section p {
+    color: white;
+}
+
+.photo-section .help-card {
+    background: rgba(255, 255, 255, 0.92);
+    color: #222;
+}
+
+.photo-section .help-card h3 {
+    color: #1d3557;
+}
+
+.photo-section .help-card p {
+    color: #222;
+}
+
+/* Scroll animation */
+.fade-in {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-in.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.photo-section .stats {
+    display: flex;
+    gap: 25px;
+    margin-top: 35px;
+    flex-wrap: wrap;
+    max-width: 1050px;
+}
+
+.photo-section .stats div {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 30px;
+    border-radius: 12px;
+    flex: 1;
+    min-width: 220px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+.photo-section .stats h3 {
+    color: #c1121f;
+    font-size: 42px;
+}
+
+.photo-section .stats p {
+    color: #222;
+}
+.help-card {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show .help-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in.show .help-card:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.fade-in.show .help-card:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.fade-in.show .help-card:nth-child(3) {
+    transition-delay: 0.5s;
+}
+.stats div {
+    opacity: 0;
+    transform: translateY(45px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.show .stats div {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in.show .stats div:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.fade-in.show .stats div:nth-child(2) {
+    transition-delay: 0.3s;
+}
+
+.fade-in.show .stats div:nth-child(3) {
+    transition-delay: 0.5s;
+}
 
 
 
 @media (max-width: 750px) {
+	
+	.photo-section{
+		background-attachment:scroll;
+	}
+	
     .navbar {
         flex-direction: column;
         gap: 20px;

@@ -73,7 +73,7 @@
         assistance that makes a real difference in daily life.
     </p>
 </section>
-<section id="who" class="section">
+<section id="who" class="section photo-section fade-in" style="background-image: url('images/zvecan.jpg');">
 
     <h2>Who We Help</h2>
 
@@ -101,7 +101,8 @@
         </div>
 
     </div>
-	<section id="how" class="section">
+	</section>
+	<section id="how" class="section photo-section fade-in" style="background-image: url('images/pec.jpg');">
 
     <h2>How We Help</h2>
 
@@ -167,7 +168,7 @@
 </div>
 </section>
 
-<section id="families" class="section">
+<section id="families" class="section photo-section fade-in" style="background-image: url('images/folklore.jpg');">
     <h2>Families Helped</h2>
 
     <p>
@@ -193,7 +194,7 @@
     </div>
 </section>
 
-<section id="transparency" class="section">
+<section id="transparency" class="section photo-section fade-in" style="background-image: url('images/flag.jpg');">
     <h2>Transparency</h2>
 
     <p>
@@ -215,6 +216,45 @@
 <footer>
     <p>© 2026 Deca Kosova • Children of Kosovo</p>
 </footer>
+<script>
+
+const fadeElements = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+        }
+
+    });
+},{
+    threshold: 0.2
+});
+
+fadeElements.forEach(section => {
+    observer.observe(section);
+});
+
+
+const photoSections = document.querySelectorAll(".photo-section");
+
+window.addEventListener("scroll", () => {
+
+    photoSections.forEach(section => {
+
+        const speed = 0.35;
+
+        const yPos = window.pageYOffset - section.offsetTop;
+
+        section.style.backgroundPosition =
+            `center ${yPos * speed}px`;
+
+    });
+
+});
+
+</script>
 
 </body>
 </html>
