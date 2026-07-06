@@ -79,21 +79,21 @@
 
     <div class="help-grid">
 
-        <div class="help-card">
+        <div class="help-card reveal-card">
             <h3>👨‍👩‍👧 Families</h3>
             <p>
                 Serbian families facing financial hardship while raising children in Kosovo.
             </p>
         </div>
 
-        <div class="help-card">
+        <div class="help-card reveal-card">
             <h3>🧒 Children</h3>
             <p>
                 Children who need school supplies, clothing, food, or other everyday essentials.
             </p>
         </div>
 
-        <div class="help-card">
+        <div class="help-card reveal-card">
             <h3>🏠 Practical Needs</h3>
             <p>
                 Groceries, appliances, heating, repairs, and other necessities that improve daily life.
@@ -108,17 +108,17 @@
 
     <div class="help-grid">
 
-        <div class="help-card">
+        <div class="help-card reveal-card">
             <h3>🛒 Groceries</h3>
             <p>Food and basic household supplies for families with children.</p>
         </div>
 
-        <div class="help-card">
+        <div class="help-card reveal-card">
             <h3>🎒 School Needs</h3>
             <p>Backpacks, notebooks, clothing, shoes, and supplies for children.</p>
         </div>
 
-        <div class="help-card">
+        <div class="help-card reveal-card">
             <h3>🏠 Household Support</h3>
             <p>Appliances, repairs, heating help, and other practical family needs.</p>
         </div>
@@ -254,6 +254,23 @@ window.addEventListener("scroll", () => {
 
 });
 
+</script>
+<script>
+const cards = document.querySelectorAll(".reveal-card");
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add("visible");
+            }, index * 200);
+        }
+    });
+}, {
+    threshold: 0.2
+});
+
+cards.forEach(card => observer.observe(card));
 </script>
 
 </body>

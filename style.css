@@ -529,6 +529,16 @@ footer {
 .fade-in.show .stats div:nth-child(3) {
     transition-delay: 0.5s;
 }
+.reveal-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 
 
