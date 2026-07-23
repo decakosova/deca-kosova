@@ -6,6 +6,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -14,15 +15,135 @@ body {
     background: #f7f3eb;
     line-height: 1.7;
 }
+.sr {
+    display:none;
+}
+.language-toggle {
 
+    display:flex;
+    gap:10px;
+
+}
+
+
+.language-toggle button {
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    background:rgba(255,255,255,0.15);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,0.4);
+
+    padding:8px 14px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    backdrop-filter:blur(5px);
+
+    transition:.3s;
+
+}
+
+
+.language-toggle button:hover {
+
+    background:#c1121f;
+
+    transform:translateY(-2px);
+
+}
+
+
+.language-toggle img {
+
+    width:22px;
+
+    height:14px;
+
+    object-fit:cover;
+
+    border-radius:2px;
+
+}
+.language-toggle {
+
+    display:flex;
+    gap:10px;
+
+}
+
+
+.language-toggle button {
+
+    background:rgba(255,255,255,0.15);
+
+    color:white;
+
+    border:1px solid rgba(255,255,255,0.4);
+
+    padding:8px 14px;
+
+    border-radius:25px;
+
+    cursor:pointer;
+
+    font-weight:bold;
+
+    font-size:14px;
+
+    backdrop-filter:blur(5px);
+
+    transition:.3s;
+
+}
+
+
+.language-toggle button:hover {
+
+    background:#c1121f;
+
+    transform:translateY(-2px);
+
+}
 .hero {
-    min-height: 850px;
-    background:
-        linear-gradient(rgba(10, 20, 35, 0.65), rgba(10, 20, 35, 0.65)),
-        url("images/mural.jpg");
-    background-size: cover;
-    background-position: center;
+    height: 850px;
+    position: relative;
+    overflow: hidden;
     color: white;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(rgba(10,20,35,0.65), rgba(10,20,35,0.65)),
+        url("images/mural.jpg");
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    transform: translateZ(0) scale(1);
+    will-change: transform;
+
+    z-index: 0;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 1;
 }
 .motto {
     font-size: 20px;
@@ -37,17 +158,21 @@ body {
     top: 0;
     z-index: 1000;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 
-    padding: 18px 8%;
+    flex-wrap:nowrap; /* add this */
 
-    background: rgba(15, 25, 40, .92);
+    height:110px; /* add this */
 
-    backdrop-filter: blur(10px);
+    padding:18px 5%;
 
-    transition: .3s;
+    background:rgba(15,25,40,.92);
+
+    backdrop-filter:blur(10px);
+
+    transition:.3s;
 
 }
 
@@ -64,10 +189,9 @@ body {
 }
 
 .hero-content {
-    max-width: 720px;
-    padding: 75px 8% 60px;
+    max-width:720px;
+    padding:60px 8% 40px;
 }
-
 .hero-content h2 {
     font-size: 56px;
     line-height: 1.15;
@@ -75,8 +199,13 @@ body {
 }
 
 .hero-content p {
-    font-size: 22px;
-    margin-bottom: 35px;
+    font-size:21px;
+    line-height:1.5;
+    margin-bottom:25px;
+}
+.hero-content .sr {
+    font-size: 90%;
+    line-height: 1.5;
 }
 
 .button{
@@ -400,8 +529,8 @@ footer {
     max-width: none;
     width: 100%;
     padding: 100px 8%;
-    background-size: cover;
-    background-position: center center;
+    background-size: 100% auto;
+    background-position: center top;
     background-repeat: no-repeat;
 
     position: relative;
@@ -411,6 +540,9 @@ footer {
     background-attachment: fixed;
 
     transition: background-position 0.15s linear;
+}
+section {
+    scroll-margin-top: 100px;
 }
 
 .photo-section::before {
@@ -538,6 +670,77 @@ footer {
 .reveal-card.visible {
     opacity: 1;
     transform: translateY(0);
+}
+.process-section{
+    text-align:center;
+    margin-top:45px;
+}
+
+.process-button{
+
+    background:#c1121f;
+    color:white;
+    border:none;
+    padding:16px 34px;
+    border-radius:40px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    transition:.3s;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+
+}
+
+.process-button:hover{
+
+    background:#9f0e19;
+    transform:translateY(-3px);
+
+}
+
+.process-list{
+
+    max-height: 0;
+    overflow: hidden;
+
+    opacity: 0;
+
+    margin-top: 0;
+
+    text-align: left;
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+
+    transition:
+        max-height .7s ease,
+        opacity .5s ease,
+        margin-top .5s ease;
+
+}
+.process-list.open{
+
+    max-height: 700px;
+    opacity: 1;
+    margin-top: 20px;
+
+}
+
+.process-step{
+
+    padding:12px 20px;
+    margin-bottom:10px;
+    border-radius:10px;
+
+}
+
+.process-step h3{
+    font-size:18px;
+    margin-bottom:4px;
+}
+
+.process-step p{
+    font-size:15px;
 }
 
 
